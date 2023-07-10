@@ -9,11 +9,12 @@
 
 ## Getting Started
 
+
 # Topicpedia Backend Service
 
 ## Overview
 
-Topicpedia-backend Service is responsible for handling all requests from the frontend client app, when a user interact with the client app. It returns response to client according to the request.
+Topicpedia-backend Service is responsible for handling all requests from the frontend client app. When users interact with the client app, the backedend service returns response based on the input.
 
 ## Technologies
 
