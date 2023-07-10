@@ -34,24 +34,25 @@ public class SearchTitleService {
      */
     public SearchTitleResponse searchTitle(String title) throws ResourceEmptyException {
         SearchTitleResponse searchTitleResponse = null;
-
+        //replace special characters with %
         String encodedTopic = URLEncoder.encode(title, StandardCharsets.UTF_8);
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(Constant.API_URL+Constant.TITLE_PARAM1+encodedTopic+Constant.TITLE_PARAM2))
                 .build();
-
+        //make a get request call to Wikipedia API
         HttpClient httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
                 .build();
                     try {
                         HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
-                            //convert jsonString to jsonObject and store user data to database.
+                            //convert jsonString to java Object.
                             ObjectMapper objectMapper = new ObjectMapper();
                             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
                             SearchTitle searchTitle = objectMapper.readValue(response.body(), SearchTitle.class);
+                            //validate the return object
                             if(searchTitle.getQuery().getPages().get(0).getExtract()!=null &&
                                searchTitle.getQuery().getPages().get(0).getThumbnail()!=null){
 
