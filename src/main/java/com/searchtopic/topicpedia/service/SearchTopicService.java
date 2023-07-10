@@ -34,6 +34,13 @@ public class SearchTopicService {
     @Autowired
     private SearchTitleService searchTitleService;
 
+
+    /**
+     * Returns the full list of search topic  .
+     * @param topic The topic to search for.
+     * @return The page with the input topic, else returns a search result is empty error.
+     * @throws ResourceEmptyException if search topic request cannot be fetched due to server problem.
+     */
     public List<SearchResponse> searchTopic(String topic) throws ResourceEmptyException {
         SearchResponse searchResponses = new SearchResponse();
         List<SearchResponse> result = null;

@@ -25,6 +25,13 @@ public class SearchTitleService {
 
  private final Logger log = LoggerFactory.getLogger(SearchTitleService.class);
 
+
+    /**
+     * Returns the page with this title, else returns no page content found.
+     * @param title The topic to search for.
+     * @return The page with the input topic, else returns a no page content found error.
+     * @throws ResourceEmptyException if page title request cannot be fetched due to server problem
+     */
     public SearchTitleResponse searchTitle(String title) throws ResourceEmptyException {
         SearchTitleResponse searchTitleResponse = null;
 
